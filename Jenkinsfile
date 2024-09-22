@@ -3,13 +3,12 @@ pipeline
  agent any
  stages
  {
-  stage('scm checkout')
+  stage('scm checkout1')
   { steps { git 'https://github.com/ravirajole/mavenproject.git'}  }
 
-  stage('validate')
+  stage('compile the job')    //validate then compile
   { steps { withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_Home', maven: 'MVN_home', mavenSettingsConfig: '', traceability: true) 
-	    { sh 'mvn validate'}
-   	  }  
-   }
+	    { sh 'mvn compile'} }  
+  }
  }
 }

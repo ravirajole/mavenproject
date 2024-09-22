@@ -9,7 +9,7 @@ pipeline
 
   stage('build the code')    //build the job clean workspace skip test scripts
   { steps { withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_Home', maven: 'MVN_home', mavenSettingsConfig: '', traceability: true) 
-	    { sh 'clean mvn -B DskipTests package'} }  
+	    { sh 'mvn clean -B DskipTests package'} }  
   }
  }
 }

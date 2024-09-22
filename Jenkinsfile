@@ -14,5 +14,9 @@ pipeline
   { steps { withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_Home', maven: 'MVN_home', mavenSettingsConfig: '', traceability: true) 
 	    { sh 'mvn test'} }  
   }
+  stage('build the code')    //build the job
+  { steps { withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_Home', maven: 'MVN_home', mavenSettingsConfig: '', traceability: true) 
+	    { sh 'mvn package'} }  
+  }
  }
 }

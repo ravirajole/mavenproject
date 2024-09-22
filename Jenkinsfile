@@ -7,9 +7,9 @@ pipeline
   { steps { git 'https://github.com/ravirajole/mavenproject.git'}  }
 
 
-  stage('build the code')    //build the job
+  stage('build the code')    //build the job clean workspace skip test scripts
   { steps { withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_Home', maven: 'MVN_home', mavenSettingsConfig: '', traceability: true) 
-	    { sh 'mvn package'} }  
+	    { sh 'clean mvn -B DskipTests package'} }  
   }
  }
 }

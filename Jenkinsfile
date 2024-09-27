@@ -1,6 +1,6 @@
 pipeline
 {
- agent any
+ agent any00
  stages
  {
   stage('scm checkout1')
@@ -13,7 +13,7 @@ pipeline
   }
   stage('deploy to tomcat dev')
   { steps{sshagent(['DEVCICD']) {
-	   sh 'scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@172.31.27.153:/usr/share/tomcat/webapps'}}
+	   sh 'scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@172.31.27.153:/usr/share/tomcat/webapps'}}     
   }
  }
 }

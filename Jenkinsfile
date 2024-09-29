@@ -4,7 +4,7 @@ pipeline
  stages
  {
   stage('scm checkout')
-  { steps { git 'https://github.com/ravirajole/mavenproject.git'}  }
+  { steps {LABEL: JAVA { git 'https://github.com/ravirajole/mavenproject.git'}  }
 
 
   stage('build the code')    //build the job clean workspace skip test scripts

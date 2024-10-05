@@ -6,15 +6,15 @@ pipeline
   stage('scm checkout') 
   { steps { git 'https://github.com/ravirajole/mavenproject.git'}  }
 
-  stage('Compile the code')  
+  stage('Compile the code')  {
    steps { withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_Home', maven: 'MVN_home', mavenSettingsConfig: '', traceability: true) 
-	    { sh 'mvn compile'} }  
+	    { sh 'mvn compile'} } } 
 
-  stage('Test the code') 
+  stage('Test the code') {
    steps { withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_Home', maven: 'MVN_home', mavenSettingsConfig: '', traceability: true) 
-	    { sh 'mvn test'} }  
+	    { sh 'mvn test'} }  }
         
-  stage('build the code') 
+  stage('build the code') {
    steps { withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_Home', maven: 'MVN_home', mavenSettingsConfig: '', traceability: true) 
 	    { withSonarQubeEnv(credentialsId: 'sonar', installationName: 'mysonar') {
                     sh 'mvn clean -B -DskipTests sonar:sonar package'} } }  
@@ -23,5 +23,5 @@ pipeline
 //    steps {sshagent(['DEVCICD']) {
 // 	   sh 'scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@172.31.27.153:/usr/share/tomcat/webapps'}}     
 //   }
-//}
+}
 }

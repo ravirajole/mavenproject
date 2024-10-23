@@ -25,6 +25,11 @@ pipeline
 // }
   stage('build the docker image') {     //build the docker image
    steps { sh 'docker build -t ravirajole/tomcat:191024 .'} }  
+  stage('push the docker image') {     //push the docker image
+   steps { withDockerRegistry(credentialsId: 'DockerHubCred', url: 'https://index.docker.io/v1/') {
+    sh 'docker push ravirajole/tomcat:191024' 
+    }
+} }  
 }
 } 
 

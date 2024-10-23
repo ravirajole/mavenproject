@@ -7,6 +7,6 @@ ENV APPPORT 8080
 ENV DESTPATH /usr/local/tomcat/webapps/
 #RUN --base image has already jdk so no need any installation
 
-COPY sample.war $DESTPATH
+COPY webapp/target/webapp.war $DESTPATH
 EXPOSE $APPPORT
 CMD ["catalina.sh","run"]
